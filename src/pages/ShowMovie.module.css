@@ -3,11 +3,11 @@
 }
 
 .header {
-  @apply h-[10rem] pt-96 px-40;
+  @apply h-[10rem] pt-96 xl:px-40 lg:px-36 md:px-20 sm:px-10;
 }
 
 .content {
-  @apply bg-white px-12 py-5 opacity-90;
+  @apply bg-[#141414] px-7 sm:px-12 py-5 opacity-90 sm:rounded-3xl text-white;
 }
 
 .title {
