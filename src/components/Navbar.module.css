@@ -1,0 +1,35 @@
+.navbar {
+  @apply flex top-0 w-auto bg-black text-white px-10 p-3 items-center;
+}
+
+.navbar * {
+  @apply no-underline text-white;
+}
+
+.nav_items {
+  @apply list-none flex;
+}
+
+.nav_item:not(:last-of-type) {
+  @apply mr-8;
+}
+
+.nav_dropdown {
+  @apply absolute;
+}
+
+.nav_dropdown li {
+  @apply block;
+}
+
+.nav_dropdown li:not(:first-of-type) {
+  @apply hidden;
+}
+
+.nav_dropdown:hover * {
+  @apply !block;
+}
+
+.nav_dropdown:hover {
+  @apply bg-black;
+}

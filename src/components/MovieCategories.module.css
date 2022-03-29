@@ -1,0 +1,23 @@
+.category {
+  @apply mt-10;
+}
+
+.category_header {
+  @apply flex justify-between items-center;
+}
+
+.movieList {
+  @apply flex overflow-x-hidden;
+}
+
+.movie {
+  @apply text-center;
+}
+
+.movie:not(:last-child) {
+  @apply mr-7;
+}
+
+.movie_img {
+  @apply h-48;
+}

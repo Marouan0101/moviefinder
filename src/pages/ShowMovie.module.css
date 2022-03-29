@@ -1,0 +1,14 @@
+.movie {
+  @apply text-center;
+}
+
+.title {
+}
+
+.genres {
+  @apply flex;
+}
+
+.genre {
+  @apply font-bold;
+}
