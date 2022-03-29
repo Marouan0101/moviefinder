@@ -1,5 +1,5 @@
 .categories {
-  @apply px-10;
+  @apply px-10 mt-40;
 }
 
 .popular {

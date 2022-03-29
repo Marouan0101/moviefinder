@@ -34,17 +34,29 @@ export default class ShowMovie extends React.Component {
       <>
         <Navbar />
         <div className={styles.movie}>
-          <h1>{this.state.movie.title}</h1>
-          <img
-            className={styles.title}
-            src={`https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`}
-          />
-          <p>{this.state.movie.overview}</p>
-          <ul className={styles.genres}>
-            {this.state.movie.genres.map((genre) => {
-              return <li className={styles.genre}>{genre.name}</li>;
-            })}
-          </ul>
+          <div
+            className={styles.header}
+            style={{
+              backgroundImage: `url(
+                https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}
+              )`,
+              backgroundPosition: 'top',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+            }}
+          >
+            <div className={styles.content}>
+              <h1 className={styles.title}>{this.state.movie.title}</h1>
+              <div className={styles.overview_container}>
+                <p className={styles.overview}>{this.state.movie.overview}</p>
+              </div>
+              <ul className={styles.genres}>
+                {this.state.movie.genres.map((genre) => {
+                  return <li className={styles.genre}>{genre.name}</li>;
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
       </>
     );

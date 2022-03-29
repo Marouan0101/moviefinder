@@ -47,7 +47,7 @@ export default class MovieCategories extends React.Component {
     return (
       <div className={styles.category}>
         <div className={styles.category_header}>
-          <h1>{this.props.header}</h1>
+          <h1 className={styles.title}>{this.props.header}</h1>
           <div className={styles.buttons}>
             <button type='button' onClick={() => scroll('left')}>
               {'<'}
@@ -65,9 +65,10 @@ export default class MovieCategories extends React.Component {
                   <img
                     className={styles.movie_img}
                     src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
+                    alt={movie.title}
                   />
                 </Link>
-                <h3 className={styles.movie_title}>{movie.title}</h3>
+                {/* <h3 className={styles.movie_title}>{movie.title}</h3> */}
               </div>
             );
           })}

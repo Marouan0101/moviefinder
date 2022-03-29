@@ -1,5 +1,11 @@
 .navbar {
-  @apply flex top-0 w-auto bg-black text-white px-10 p-3 items-center;
+  @apply flex top-0 w-full  text-white px-10 p-3 items-center fixed;
+  background: rgb(20, 20, 20);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 20, 0.99) 30%,
+    rgba(20, 20, 20, 0) 700%
+  );
 }
 
 .navbar * {
@@ -10,8 +16,8 @@
   @apply list-none flex;
 }
 
-.nav_item:not(:last-of-type) {
-  @apply mr-8;
+.nav_item {
+  @apply ml-8;
 }
 
 .nav_dropdown {

@@ -2,11 +2,27 @@
   @apply text-center;
 }
 
+.header {
+  @apply h-[10rem] pt-96 px-40;
+}
+
+.content {
+  @apply bg-white px-12 py-5 opacity-90;
+}
+
 .title {
+  @apply text-5xl mb-16;
+}
+
+.overview_container {
+}
+
+.overview {
+  @apply text-center;
 }
 
 .genres {
-  @apply flex;
+  /* @apply flex; */
 }
 
 .genre {
