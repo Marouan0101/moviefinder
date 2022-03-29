@@ -59,7 +59,12 @@ export default class MovieCategories extends React.Component {
         </div>
         <div className={styles.movieList} id={this.props.id}>
           {this.state.movies.map((movie) => {
-            if (movie.poster_path && movie.backdrop_path && movie.overview) {
+            if (
+              movie.poster_path &&
+              movie.backdrop_path &&
+              (movie.title || movie.original_title) &&
+              movie.overview
+            ) {
               return (
                 <div key={movie.id} className={styles.movie}>
                   <Link to={`ShowMovie?id=${movie.id}`}>
