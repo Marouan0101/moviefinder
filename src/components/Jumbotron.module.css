@@ -1,0 +1,20 @@
+.movie {
+  @apply text-center no-underline;
+}
+
+.header {
+  @apply h-[10rem] pt-72 pb-20 xl:px-40 lg:px-36 md:px-20 sm:px-10;
+}
+
+.content {
+  @apply rounded-2xl;
+  text-shadow: 0px 10px 30px black;
+}
+
+.title {
+  @apply text-5xl mb-16 shadow-black;
+}
+
+.overview {
+  @apply hidden sm:block;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styles from './MovieCategories.module.css';
 
 export default class MovieCategories extends React.Component {
@@ -48,12 +49,21 @@ export default class MovieCategories extends React.Component {
       <div className={styles.category}>
         <div className={styles.category_header}>
           <h1 className={styles.title}>{this.props.header}</h1>
+
           <div className={styles.buttons}>
-            <button type='button' onClick={() => scroll('left')}>
-              {'<'}
+            <button
+              type='button'
+              className={styles.button}
+              onClick={() => scroll('left')}
+            >
+              <FaChevronLeft />
             </button>
-            <button type='button' onClick={() => scroll('right')}>
-              {'>'}
+            <button
+              type='button'
+              className={styles.button}
+              onClick={() => scroll('right')}
+            >
+              <FaChevronRight />
             </button>
           </div>
         </div>
