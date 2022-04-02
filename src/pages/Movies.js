@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 
 export default function Movies() {
@@ -6,6 +7,7 @@ export default function Movies() {
     <>
       <Navbar />
       <h1>Movies page</h1>
+      <Footer />
     </>
   );
 }

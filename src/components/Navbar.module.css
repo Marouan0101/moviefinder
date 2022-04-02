@@ -1,5 +1,5 @@
 .navbar {
-  @apply flex top-0 w-full  text-white px-10 p-3 items-center fixed;
+  @apply flex top-0 w-full px-10 p-3 items-center fixed;
   background: rgb(20, 20, 20);
   background: linear-gradient(
     180deg,
@@ -9,7 +9,11 @@
 }
 
 .navbar * {
-  @apply no-underline text-white;
+  @apply no-underline;
+}
+
+.title {
+  @apply text-primary;
 }
 
 .nav_items {
@@ -20,12 +24,20 @@
   @apply ml-8;
 }
 
+.nav_link:hover {
+  @apply text-primary;
+}
+
 .nav_dropdown {
   @apply absolute;
 }
 
 .nav_dropdown li {
   @apply block;
+}
+
+.nav_dropdown li:hover {
+  @apply text-primary;
 }
 
 .nav_dropdown li:not(:first-of-type) {
@@ -37,5 +49,5 @@
 }
 
 .nav_dropdown:hover {
-  @apply bg-black;
+  @apply bg-[#0000009f];
 }

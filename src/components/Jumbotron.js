@@ -27,12 +27,14 @@ export default class ShowMovie extends React.Component {
       return <div>didn't get any movies</div>;
     }
 
+    const truncate = (source, size) => {
+      return source.length > size ? source.slice(0, size - 1) + '…' : source;
+    };
+
     return (
       <>
-        <Link
-          className={styles.movie}
-          to={`ShowMovie?id=${this.state.movie.id}`}
-        >
+        {}
+        <div className={styles.movie}>
           <div
             className={styles.header}
             style={{
@@ -46,10 +48,20 @@ export default class ShowMovie extends React.Component {
           >
             <div className={styles.content}>
               <h1 className={styles.title}>{this.state.movie.title}</h1>
-              <p className={styles.overview}>{this.state.movie.overview}</p>
+
+              <p className={styles.overview}>
+                {truncate(this.state.movie.overview, 300)}
+              </p>
+
+              <Link
+                className={styles.button}
+                to={`ShowMovie?id=${this.state.movie.id}`}
+              >
+                More Info
+              </Link>
             </div>
           </div>
-        </Link>
+        </div>
       </>
     );
   }

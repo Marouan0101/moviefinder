@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import styles from './ShowMovie.module.css';
 
@@ -6,6 +8,7 @@ export default class ShowMovie extends React.Component {
   state = {
     loading: true,
     movie: null,
+    providers: null,
   };
 
   async componentDidMount() {
@@ -15,10 +18,19 @@ export default class ShowMovie extends React.Component {
     const movieId = params.id;
 
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US`;
+    const url2 = `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=5d1ca884d832cc35c28f4c48849ebd48`;
+
     const response = await fetch(url);
+    const response2 = await fetch(url2);
+
     const data = await response.json();
-    this.setState({ movie: data, loading: false });
-    console.log(this.state.movie);
+    const data2 = await response2.json();
+
+    this.setState({
+      movie: data,
+      providers: data2.results['DK'],
+      loading: false,
+    });
   }
 
   render() {
@@ -28,6 +40,10 @@ export default class ShowMovie extends React.Component {
 
     if (!this.state.movie) {
       return <div>didn't get a movie</div>;
+    }
+
+    if (!this.state.providers) {
+      return <div>didn't get a provider</div>;
     }
 
     return (
@@ -55,9 +71,28 @@ export default class ShowMovie extends React.Component {
                   return <li className={styles.genre}>{genre.name}</li>;
                 })}
               </ul>
+
+              <ul className={styles.providers}>
+                {this.state.providers.buy.map((provider) => {
+                  return (
+                    <li className={styles.provider}>
+                      {provider.provider_name}
+                      <img
+                        src={
+                          'https://image.tmdb.org/t/p/w500/' +
+                          provider.logo_path
+                        }
+                        className={styles.provider_logo}
+                      ></img>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </div>
+
+        <Footer />
       </>
     );
   }

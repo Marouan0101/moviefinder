@@ -28,3 +28,7 @@
 .genre {
   @apply font-bold;
 }
+
+.provider_logo {
+  @apply h-10;
+}

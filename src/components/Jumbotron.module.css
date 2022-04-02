@@ -3,7 +3,7 @@
 }
 
 .header {
-  @apply h-[10rem] pt-72 pb-20 xl:px-40 lg:px-36 md:px-20 sm:px-10;
+  @apply h-[4rem] sm:h-[auto] pt-44 sm:pt-52 pb-32 sm:pb-24 xl:px-40 lg:px-36 md:px-20 sm:px-10;
 }
 
 .content {
@@ -12,9 +12,13 @@
 }
 
 .title {
-  @apply text-5xl mb-16 shadow-black;
+  @apply sm:text-5xl mb-8 sm:mb-10 shadow-black;
 }
 
 .overview {
-  @apply hidden sm:block;
+  @apply hidden sm:block sm:mb-10;
+}
+
+.button {
+  @apply bg-primary no-underline px-12 py-3 rounded-3xl text-lg;
 }

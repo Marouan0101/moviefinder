@@ -1,12 +1,16 @@
 .category {
-  @apply mt-20  rounded-2xl;
+  @apply mt-10 sm:mt-20  rounded-2xl;
+}
+
+.category:last-of-type {
+  @apply sm:mb-40;
 }
 
 .category_header {
   @apply flex justify-between items-center;
 }
 .title {
-  @apply text-white mb-4;
+  @apply text-primary mb-4;
 }
 .movieList {
   @apply flex overflow-x-auto sm:overflow-x-hidden;
@@ -34,4 +38,8 @@
 
 .button:not(:last-child) {
   @apply mr-2;
+}
+
+.button:hover * {
+  @apply text-primary;
 }

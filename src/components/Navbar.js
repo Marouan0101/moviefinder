@@ -27,7 +27,9 @@ export default class Navbar extends React.Component {
     return (
       <div className={styles.navbar}>
         <h1>
-          <Link to='/'>MovieFinder</Link>
+          <Link className={styles.title} to='/'>
+            MovieFinder
+          </Link>
         </h1>
 
         <ul className={styles.nav_items}>

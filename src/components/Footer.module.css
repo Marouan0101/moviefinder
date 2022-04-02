@@ -1,0 +1,16 @@
+.footer {
+  @apply text-center pt-20 pb-10 px-20 bg-[#080808];
+}
+
+.title {
+  @apply text-4xl no-underline font-bold;
+}
+
+hr {
+  @apply border-primary mt-10 mb-20 border-[0.5px];
+  border-style: inset;
+}
+
+.copyright {
+  @apply text-gray-500 text-sm;
+}
