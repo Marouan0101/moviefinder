@@ -1,5 +1,5 @@
 .navbar {
-  @apply flex top-0 w-full px-10 p-3 items-center fixed;
+  @apply flex top-0 w-full px-10 p-3 items-center fixed z-50;
   background: rgb(20, 20, 20);
   background: linear-gradient(
     180deg,

@@ -1,34 +1,54 @@
 .movie {
-  @apply text-center;
 }
 
 .header {
-  @apply h-[10rem] pt-96 xl:px-40 lg:px-36 md:px-20 sm:px-10;
+  @apply h-[10rem] pt-96;
 }
 
 .content {
-  @apply bg-[#141414] px-7 sm:px-12 py-5 opacity-90 sm:rounded-3xl text-white;
+  @apply bg-secondary px-7 xl:px-40 lg:px-36 md:px-20 sm:px-12 py-5 opacity-90 text-white;
+  transform: translateY(-8rem);
+}
+
+.wrapper_title {
+  @apply mb-16;
 }
 
 .title {
-  @apply text-5xl mb-16;
+  @apply text-5xl mb-5;
+}
+
+.wrapper_left {
+  @apply flex;
 }
 
 .overview_container {
 }
 
+.overview_poster {
+  @apply h-80 ml-8 rounded-md;
+}
+
 .overview {
-  @apply text-center;
+  @apply mb-16 text-lg;
 }
 
 .genres {
-  /* @apply flex; */
+  @apply flex list-none;
+}
+
+.genres *:not(:last-of-type) {
+  @apply mr-4;
 }
 
 .genre {
-  @apply font-bold;
+  @apply font-bold text-sm bg-primary text-center px-4 py-2 rounded-3xl whitespace-nowrap;
 }
 
 .provider_logo {
   @apply h-10;
+}
+
+.trailer {
+  @apply sm:h-96 h-64  w-full;
 }

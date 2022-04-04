@@ -15,6 +15,7 @@ ReactDOM.render(
         <Route path='Movies' element={<Movies />} />
         <Route path='TV' element={<TV />} />
         <Route path='ShowMovie' element={<ShowMovie />} />
+        <Route path='*' element={<h1>No page found</h1>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

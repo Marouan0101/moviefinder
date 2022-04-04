@@ -3,9 +3,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#0dbdd1', //#FFA31A,
+        primary: '#0dbdd1',
+        secondary: '#141414',
       },
     },
   },
   plugins: [],
 };
+/* #FFA31A */
