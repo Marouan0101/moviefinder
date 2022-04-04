@@ -1,7 +1,11 @@
 import React from 'react';
+import { FaStar } from 'react-icons/fa';
+import SimilarMovies from '../components/MovieCategories';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import styles from './ShowMovie.module.css';
+
+let urlSimilarMovies;
 
 export default class ShowMovie extends React.Component {
   state = {
@@ -9,6 +13,7 @@ export default class ShowMovie extends React.Component {
     movie: null,
     providers: null,
     trailer: null,
+    similarMovies: null,
   };
 
   async componentDidMount() {
@@ -20,19 +25,23 @@ export default class ShowMovie extends React.Component {
     const urlMovie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US`;
     const urlProvider = `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=5d1ca884d832cc35c28f4c48849ebd48`;
     const urlTrailer = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US`;
+    urlSimilarMovies = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1`;
 
     const responseMovie = await fetch(urlMovie);
     const responseProvider = await fetch(urlProvider);
     const responseTrailer = await fetch(urlTrailer);
+    const responseSimilarMovies = await fetch(urlSimilarMovies);
 
     const movieData = await responseMovie.json();
     const providerData = await responseProvider.json();
     const trailerData = await responseTrailer.json();
+    const similarMoviesData = await responseSimilarMovies.json();
 
     this.setState({
       movie: movieData,
       providers: providerData.results['DK'],
       trailer: trailerData.results,
+      similarMovies: similarMoviesData.results,
       loading: false,
     });
 
@@ -64,22 +73,22 @@ export default class ShowMovie extends React.Component {
       if (this.state.providers && this.state.providers.flatrate) {
         return (
           <ul className={styles.providers}>
-            <a href={this.state.providers.link} target='_blank'>
-              {this.state.providers.flatrate.map((provider) => {
-                return (
-                  <li className={styles.provider}>
-                    {provider.provider_name}
+            {this.state.providers.flatrate.map((provider) => {
+              return (
+                <li className={styles.provider}>
+                  <a href={this.state.providers.link} target='_blank'>
                     <img
                       src={
-                        'https://image.tmdb.org/t/p/w500/' + provider.logo_path
+                        'https://image.tmdb.org/t/p/original/' +
+                        provider.logo_path
                       }
                       alt={provider.provider_name}
                       className={styles.provider_logo}
                     ></img>
-                  </li>
-                );
-              })}
-            </a>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         );
       }
@@ -95,7 +104,7 @@ export default class ShowMovie extends React.Component {
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
             allowfullscreen='allowfullscreen'
-          ></iframe>
+          />
         );
       }
     };
@@ -108,7 +117,7 @@ export default class ShowMovie extends React.Component {
               className={styles.header}
               style={{
                 backgroundImage: `url(
-                https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}
+                https://image.tmdb.org/t/p/original${this.state.movie.backdrop_path}
               )`,
                 backgroundPosition: 'top',
                 backgroundSize: 'cover',
@@ -121,21 +130,36 @@ export default class ShowMovie extends React.Component {
                 {showGenres()}
               </div>
 
-              <div className={styles.wrapper_left}>
-                <div className={styles.overview_container}>
+              <div className={`${styles.wrapper} `}>
+                <div className={`${styles.overview_container}`}>
                   <p className={styles.overview}>{this.state.movie.overview}</p>
                   {showTrailer()}
                 </div>
 
-                <div className={styles.wrapper_right}>
+                <div className={`${styles.wrapper_right} `}>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${this.state.movie.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/original${this.state.movie.poster_path}`}
                     className={styles.overview_poster}
                   />
+
+                  <div className={styles.poster_info}>
+                    <div className={styles.runtime}>
+                      {this.state.movie.runtime} min
+                    </div>
+                    <div className={styles.wrapper_rating}>
+                      <FaStar className={styles.icon_star} />
+                      {this.state.movie.vote_average}
+                    </div>
+                  </div>
+                  {showProviders()}
                 </div>
               </div>
 
-              {showProviders()}
+              <SimilarMovies
+                header='You May Also Like'
+                id='similarMovies'
+                api={urlSimilarMovies}
+              />
             </div>
           </div>
         );

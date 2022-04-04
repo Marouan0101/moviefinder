@@ -39,7 +39,7 @@ export default class ShowMovie extends React.Component {
             className={styles.header}
             style={{
               backgroundImage: `url(
-                https://image.tmdb.org/t/p/w500${this.state.movie.backdrop_path}
+                https://image.tmdb.org/t/p/original${this.state.movie.backdrop_path}
               )`,
               backgroundPosition: 'top',
               backgroundSize: 'cover',

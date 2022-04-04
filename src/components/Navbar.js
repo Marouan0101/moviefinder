@@ -1,19 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import Searchbar from './Searchbar';
 
 export default class Navbar extends React.Component {
   state = {
     loading: true,
     genres: null,
+    searchResults: null,
+    searchQuery: null,
   };
 
   async componentDidMount() {
-    const url =
+    const urlSearch = `https://api.themoviedb.org/3/search/multi?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&query=${this.state.searchQuery}&page=1&include_adult=true`;
+    const responseSearch = await fetch(urlSearch);
+    const searchData = await responseSearch.json();
+
+    const urlGenres =
       'https://api.themoviedb.org/3/genre/movie/list?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US';
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ genres: data.genres, loading: false });
+
+    const responseGenres = await fetch(urlGenres);
+
+    const genreData = await responseGenres.json();
+
+    this.setState({
+      genres: genreData.genres,
+      searchResults: searchData.results,
+      loading: false,
+    });
   }
 
   render() {
@@ -24,6 +38,39 @@ export default class Navbar extends React.Component {
     if (!this.state.genres) {
       return <div>didn't find any genres</div>;
     }
+
+    const showSearchResults = () => {
+      if (this.state.searchResults == null) {
+        return <h1>no results</h1>;
+      } else {
+        return (
+          <ul>
+            {console.log('Search query:  ', this.state.searchQuery)}
+            {this.state.searchResults.map((results) => {
+              console.log(results.title);
+
+              <li>{results.title}</li>;
+            })}
+          </ul>
+        );
+      }
+    };
+
+    const searchbar = () => {
+      return (
+        <div>
+          <input
+            style={{ color: '#000', padding: '8px' }}
+            type='text'
+            placeholder='Search movies, actors...'
+            onChange={(e) => this.setState({ searchQuery: e.target.value })}
+          />
+
+          {showSearchResults()}
+        </div>
+      );
+    };
+
     return (
       <div className={styles.navbar}>
         <h1>
@@ -43,6 +90,8 @@ export default class Navbar extends React.Component {
               TV
             </Link>
           </li>
+
+          <li className={styles.nav_item}>{searchbar()}</li>
 
           <li className={styles.nav_item}>
             <ul className={styles.nav_dropdown}>

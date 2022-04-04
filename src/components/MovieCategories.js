@@ -77,7 +77,7 @@ export default class MovieCategories extends React.Component {
             ) {
               return (
                 <div key={movie.id} className={styles.movie}>
-                  <Link to={`ShowMovie?id=${movie.id}`}>
+                  <Link to={`/ShowMovie?id=${movie.id}`}>
                     <img
                       className={styles.movie_img}
                       src={
