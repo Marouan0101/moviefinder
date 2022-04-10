@@ -20,5 +20,5 @@
 }
 
 .button {
-  @apply bg-primary no-underline px-12 py-3 rounded-3xl text-lg;
+  @apply bg-primary no-underline px-12 py-3 rounded-full text-lg;
 }

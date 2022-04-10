@@ -3,7 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import SimilarMovies from '../components/MovieCategories';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import styles from './ShowMovie.module.css';
+import styles from './styles/ShowMovie.module.css';
 
 let urlSimilarMovies;
 
@@ -95,7 +95,7 @@ export default class ShowMovie extends React.Component {
     };
 
     const showTrailer = () => {
-      if (this.state.trailer) {
+      if (this.state.trailer && this.state.trailer.official !== false) {
         return (
           <iframe
             className={styles.trailer}
@@ -132,6 +132,32 @@ export default class ShowMovie extends React.Component {
 
               <div className={`${styles.wrapper} `}>
                 <div className={`${styles.overview_container}`}>
+                  <div className='flex mb-2'>
+                    {this.state.movie.release_date && (
+                      <p className={styles.release_date}>
+                        {this.state.movie.release_date}
+                      </p>
+                    )}
+
+                    {this.state.movie.production_companies && (
+                      <ul className={styles.production_companies}>
+                        {this.state.movie.production_companies.map(
+                          (company) => {
+                            if (company.logo_path) {
+                              return (
+                                <li key={company.id} className={styles.company}>
+                                  <img
+                                    src={`https://image.tmdb.org/t/p/original${company.logo_path}`}
+                                  />
+                                </li>
+                              );
+                            }
+                          }
+                        )}
+                      </ul>
+                    )}
+                  </div>
+
                   <p className={styles.overview}>{this.state.movie.overview}</p>
                   {showTrailer()}
                 </div>
@@ -143,13 +169,18 @@ export default class ShowMovie extends React.Component {
                   />
 
                   <div className={styles.poster_info}>
-                    <div className={styles.runtime}>
-                      {this.state.movie.runtime} min
-                    </div>
-                    <div className={styles.wrapper_rating}>
-                      <FaStar className={styles.icon_star} />
-                      {this.state.movie.vote_average}
-                    </div>
+                    {this.state.movie.runtime !== 0 && (
+                      <div className={styles.runtime}>
+                        {this.state.movie.runtime} min
+                      </div>
+                    )}
+
+                    {this.state.movie.vote_average !== 0 && (
+                      <div className={styles.wrapper_rating}>
+                        <FaStar className={styles.icon_star} />
+                        {this.state.movie.vote_average}
+                      </div>
+                    )}
                   </div>
                   {showProviders()}
                 </div>

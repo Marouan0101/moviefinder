@@ -1,5 +1,5 @@
 .content {
-  @apply px-5 sm:px-14;
+  @apply px-5 sm:px-14 sm:mb-40;
 }
 
 .popular {

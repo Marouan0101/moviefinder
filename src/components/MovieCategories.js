@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import styles from './MovieCategories.module.css';
+import styles from './styles/MovieCategories.module.css';
 
 export default class MovieCategories extends React.Component {
   state = {

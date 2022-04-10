@@ -2,10 +2,6 @@
   @apply mt-10 sm:mt-20  rounded-2xl;
 }
 
-.category:last-of-type {
-  @apply sm:mb-40;
-}
-
 .category_header {
   @apply flex justify-between items-center;
 }
