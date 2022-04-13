@@ -1,11 +1,12 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import SimilarMovies from '../components/MovieCategories';
+import MovieCategory from '../components/MovieCategories';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import styles from './styles/ShowMovie.module.css';
 
 let urlSimilarMovies;
+let urlRecommendedMovies;
 
 export default class ShowMovie extends React.Component {
   state = {
@@ -26,22 +27,26 @@ export default class ShowMovie extends React.Component {
     const urlProvider = `https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=5d1ca884d832cc35c28f4c48849ebd48`;
     const urlTrailer = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US`;
     urlSimilarMovies = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1`;
+    urlRecommendedMovies = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1`;
 
     const responseMovie = await fetch(urlMovie);
     const responseProvider = await fetch(urlProvider);
     const responseTrailer = await fetch(urlTrailer);
     const responseSimilarMovies = await fetch(urlSimilarMovies);
+    const responseRecommendedMovies = await fetch(urlRecommendedMovies);
 
     const movieData = await responseMovie.json();
     const providerData = await responseProvider.json();
     const trailerData = await responseTrailer.json();
     const similarMoviesData = await responseSimilarMovies.json();
+    const recommendedMoviesData = await responseRecommendedMovies.json();
 
     this.setState({
       movie: movieData,
       providers: providerData.results['DK'],
       trailer: trailerData.results,
       similarMovies: similarMoviesData.results,
+      RecommendedMovies: recommendedMoviesData.results,
       loading: false,
     });
 
@@ -186,7 +191,13 @@ export default class ShowMovie extends React.Component {
                 </div>
               </div>
 
-              <SimilarMovies
+              <MovieCategory
+                header='Recommended'
+                id='recommendedMovies'
+                api={urlRecommendedMovies}
+              />
+
+              <MovieCategory
                 header='You May Also Like'
                 id='similarMovies'
                 api={urlSimilarMovies}
