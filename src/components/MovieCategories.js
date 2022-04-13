@@ -77,7 +77,7 @@ export default class MovieCategories extends React.Component {
             ) {
               return (
                 <div key={movie.id} className={styles.movie}>
-                  <Link to={`/ShowMovie?id=${movie.id}`}>
+                  <a href={`/ShowMovie?id=${movie.id}`}>
                     <img
                       className={styles.movie_img}
                       src={
@@ -85,7 +85,7 @@ export default class MovieCategories extends React.Component {
                       }
                       alt={movie.title}
                     />
-                  </Link>
+                  </a>
                   {/* <h3 className={styles.movie_title}>{movie.title}</h3> */}
                 </div>
               );

@@ -1,5 +1,6 @@
 .navbar {
-  @apply flex top-0 w-full px-10 p-3 items-center fixed z-50 bg-secondary;
+  @apply flex px-10 2xl:text-lg z-50 font-semibold items-center;
+  overflow: hidden;
   background: linear-gradient(
     180deg,
     rgba(20, 20, 20, 0.99) 30%,
@@ -7,46 +8,43 @@
   );
 }
 
-.navbar * {
-  @apply no-underline;
+.navbar a {
+  @apply py-1 px-5;
+}
+
+.navbar a:hover {
+  @apply text-primary;
 }
 
 .title {
+  @apply text-primary mr-7;
+}
+
+.subnav {
+  @apply float-left overflow-hidden;
+}
+
+.subnav_title {
+  @apply bg-inherit py-4 px-5 m-0;
+}
+
+.subnav:hover .subnav_title {
   @apply text-primary;
 }
 
-.nav_items {
-  @apply list-none flex;
+.subnav_content {
+  @apply hidden absolute left-0 bg-white w-full z-50;
 }
 
-.nav_item {
-  @apply ml-8;
+.subnav_content a {
+  @apply float-left text-black;
+  border-bottom: 0.3rem solid white;
 }
 
-.nav_link:hover {
-  @apply text-primary;
+.subnav_content a:hover {
+  border-bottom: 0.3rem solid;
 }
 
-.nav_dropdown {
-  @apply absolute;
-}
-
-.nav_dropdown li {
+.subnav:hover .subnav_content {
   @apply block;
-}
-
-.nav_dropdown li:hover {
-  @apply text-primary;
-}
-
-.nav_dropdown li:not(:first-of-type) {
-  @apply hidden;
-}
-
-.nav_dropdown:hover * {
-  @apply !block;
-}
-
-.nav_dropdown:hover {
-  @apply bg-[#0000009f];
 }

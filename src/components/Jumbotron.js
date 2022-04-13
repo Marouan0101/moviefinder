@@ -13,7 +13,7 @@ export default class ShowMovie extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     this.setState({
-      movie: data.results[Math.floor(Math.random() * 4)],
+      movie: data.results[Math.floor(Math.random() * 5)],
       loading: false,
     });
   }

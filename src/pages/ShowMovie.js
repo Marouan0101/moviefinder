@@ -132,7 +132,7 @@ export default class ShowMovie extends React.Component {
 
               <div className={`${styles.wrapper} `}>
                 <div className={`${styles.overview_container}`}>
-                  <div className='flex mb-2'>
+                  <div className='flex mb-2 justify-between items-center'>
                     {this.state.movie.release_date && (
                       <p className={styles.release_date}>
                         {this.state.movie.release_date}
@@ -141,8 +141,9 @@ export default class ShowMovie extends React.Component {
 
                     {this.state.movie.production_companies && (
                       <ul className={styles.production_companies}>
-                        {this.state.movie.production_companies.map(
-                          (company) => {
+                        {this.state.movie.production_companies
+                          .slice(0, 4)
+                          .map((company) => {
                             if (company.logo_path) {
                               return (
                                 <li key={company.id} className={styles.company}>
@@ -152,8 +153,7 @@ export default class ShowMovie extends React.Component {
                                 </li>
                               );
                             }
-                          }
-                        )}
+                          })}
                       </ul>
                     )}
                   </div>

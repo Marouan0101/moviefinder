@@ -2,7 +2,7 @@
 }
 
 .header {
-  @apply h-[10rem] pt-96;
+  @apply h-[10rem] pt-96 2xl:pt-[34rem];
 }
 
 .content {
@@ -19,15 +19,19 @@
 }
 
 .release_date {
-  @apply mr-8 text-gray-400 text-xl font-bold;
+  @apply mr-8 text-gray-400 text-xl font-bold items-center;
 }
 
 .production_companies {
-  @apply flex bg-gray-100 rounded-lg px-2 py-1;
+  @apply flex bg-gray-800 rounded-lg py-2 items-center;
+}
+
+.company {
+  @apply px-4;
 }
 
 .company:not(:last-of-type) {
-  @apply pr-4;
+  border-right: 2px solid black;
 }
 
 .company img {
@@ -99,5 +103,5 @@
 }
 
 .trailer {
-  @apply h-64 sm:h-96 w-full;
+  @apply h-64 sm:h-96 2xl:h-[40rem] w-full;
 }

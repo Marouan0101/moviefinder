@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react';
 import styles from './styles/Home.module.css';
 import MovieCategories from '../components/MovieCategories';
 import Navbar from '../components/Navbar';
 import Jumbotron from '../components/Jumbotron';
 import Footer from '../components/Footer';
+import axios from 'axios';
 
 function App() {
   return (
