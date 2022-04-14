@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
 import styles from './styles/Home.module.css';
 import MovieCategories from '../components/MovieCategories';
 import Navbar from '../components/Navbar';
 import Jumbotron from '../components/Jumbotron';
 import Footer from '../components/Footer';
-import axios from 'axios';
+import fetchPopularMovies from '../Data/fetchPopularMovies';
+import fetchTopRatedMovies from '../Data/fetchTopRatedMovies';
+import fetchNowPlayingMovies from '../Data/fetchNowPlayingMovies';
+import React from 'react';
+import fetchUpcomingMovies from '../Data/fetchUpcomingMovies';
 
 function App() {
   return (
-    <>
+    <div>
       <Navbar />
       <Jumbotron api='https://api.themoviedb.org/3/movie/popular?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1' />
       <div className={styles.content}>
@@ -16,37 +19,31 @@ function App() {
           <MovieCategories
             header='Popular'
             id='popularMovies'
-            api='https://api.themoviedb.org/3/trending/all/week?api_key=5d1ca884d832cc35c28f4c48849ebd48'
-          />
-
-          <MovieCategories
-            header='Latest'
-            id='recentMovies'
-            api='https://api.themoviedb.org/3/discover/movie?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&sort_by=release_date.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
+            movies={fetchPopularMovies()}
           />
 
           <MovieCategories
             header='Top Rated'
             id='topRatedMovies'
-            api='https://api.themoviedb.org/3/movie/top_rated?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1&region=DK'
+            movies={fetchTopRatedMovies()}
           />
 
           <MovieCategories
             header='Now Playing'
             id='nowPlayingMovies'
-            api='https://api.themoviedb.org/3/movie/now_playing?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1'
+            movies={fetchNowPlayingMovies()}
           />
 
           <MovieCategories
             header='Upcoming'
             id='upcomingMovies'
-            api='https://api.themoviedb.org/3/movie/upcoming?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1'
+            movies={fetchUpcomingMovies()}
           />
         </div>
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

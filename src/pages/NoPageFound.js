@@ -1,11 +1,13 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
-export default function TV() {
+const NoPageFound = () => {
   return (
     <>
       <Navbar />
-      <h1>TV page</h1>
+      <h1>NO PAGE FOUND</h1>
     </>
   );
-}
+};
+
+export default NoPageFound;

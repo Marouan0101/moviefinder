@@ -1,0 +1,31 @@
+input {
+  @apply text-black px-3 py-2;
+}
+
+.searchresults {
+  @apply absolute h-96 overflow-y-auto overflow-x-hidden bg-black z-50 text-center w-[40rem] right-0;
+}
+
+.searchresults * {
+  @apply items-start text-left;
+}
+
+.searchresults a {
+  @apply flex;
+}
+
+.searchresults a img {
+  @apply w-1/3 rounded-lg mr-5;
+}
+
+.movie_title {
+  @apply text-2xl whitespace-nowrap;
+}
+
+.type {
+  @apply text-lg font-light;
+}
+
+.rating {
+  @apply mt-1;
+}

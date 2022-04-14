@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import apiKey from './apiKey';
 
 const NavigationLinks = () => {
-  const apiKey = '5d1ca884d832cc35c28f4c48849ebd48';
   const genresAPI = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
   const [genres, setGenres] = useState([]);
 

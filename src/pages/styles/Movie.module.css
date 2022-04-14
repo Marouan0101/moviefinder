@@ -38,14 +38,6 @@
   @apply h-9;
 }
 
-.wrapper {
-  @apply grid grid-cols-6 gap-10;
-}
-
-.wrapper_right {
-  @apply col-span-2;
-}
-
 .poster_info {
   @apply items-center flex justify-between;
 }
@@ -54,12 +46,8 @@
   @apply lg:text-2xl text-xl font-bold;
 }
 
-.overview_poster {
+.poster {
   @apply w-full rounded-md mb-2;
-}
-
-.wrapper_rating {
-  @apply lg:text-3xl text-2xl;
 }
 
 .icon_star {
@@ -68,10 +56,6 @@
 
 .icon_star * {
   @apply text-[#ffee00];
-}
-
-.overview_container {
-  @apply col-span-full md:col-span-4;
 }
 
 .overview {

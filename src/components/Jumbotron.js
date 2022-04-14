@@ -32,8 +32,7 @@ export default class ShowMovie extends React.Component {
     };
 
     return (
-      <>
-        {}
+      <div>
         <div className={styles.movie}>
           <div
             className={styles.header}
@@ -41,7 +40,7 @@ export default class ShowMovie extends React.Component {
               backgroundImage: `url(
                 https://image.tmdb.org/t/p/original${this.state.movie.backdrop_path}
               )`,
-              backgroundPosition: 'top',
+              backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
             }}
@@ -53,16 +52,16 @@ export default class ShowMovie extends React.Component {
                 {truncate(this.state.movie.overview, 300)}
               </p>
 
-              <Link
+              <a
                 className={styles.button}
-                to={`ShowMovie?id=${this.state.movie.id}`}
+                href={`/Movie?id=${this.state.movie.id}`}
               >
                 More Info
-              </Link>
+              </a>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

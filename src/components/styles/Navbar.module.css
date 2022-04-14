@@ -1,5 +1,5 @@
 .navbar {
-  @apply flex px-10 2xl:text-lg z-50 font-semibold items-center;
+  @apply flex px-10 2xl:text-lg z-50 font-semibold items-center justify-between;
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -8,8 +8,23 @@
   );
 }
 
+.navbar * {
+  @apply items-center;
+}
+
+.navbar a,
+.subnav_title {
+  border-bottom: 0.3rem solid rgb(20, 20, 20);
+}
+
+.navbar .active,
+.subnav_content a:hover {
+  @apply text-primary;
+  border-bottom: 0.3rem solid;
+}
+
 .navbar a {
-  @apply py-1 px-5;
+  @apply pb-3 pt-[1.05rem] px-5;
 }
 
 .navbar a:hover {
@@ -17,15 +32,16 @@
 }
 
 .title {
-  @apply text-primary mr-7;
+  @apply text-primary mr-7 text-4xl;
 }
 
 .subnav {
   @apply float-left overflow-hidden;
 }
 
-.subnav_title {
-  @apply bg-inherit py-4 px-5 m-0;
+.subnav_title,
+.navbar a {
+  @apply bg-inherit pb-3 pt-[1.05rem] px-5 m-0;
 }
 
 .subnav:hover .subnav_title {
@@ -37,12 +53,8 @@
 }
 
 .subnav_content a {
-  @apply float-left text-black;
+  @apply float-left text-black py-2;
   border-bottom: 0.3rem solid white;
-}
-
-.subnav_content a:hover {
-  border-bottom: 0.3rem solid;
 }
 
 .subnav:hover .subnav_content {
