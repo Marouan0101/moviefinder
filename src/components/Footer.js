@@ -9,7 +9,7 @@ export default function Footer() {
         MovieFinder
       </Link>
 
-      <hr />
+      <hr className={styles.hr} />
       <p className={styles.copyright}>Marouan El Yattafti &copy;</p>
     </div>
   );

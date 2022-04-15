@@ -23,7 +23,7 @@
 }
 
 .production_companies {
-  @apply flex bg-gray-800 rounded-lg py-2 items-center;
+  @apply hidden lg:flex bg-gray-800 rounded-lg py-2 items-center;
 }
 
 .company {
@@ -88,4 +88,57 @@
 
 .trailer {
   @apply h-64 sm:h-96 2xl:h-[40rem] w-full;
+}
+
+.cast {
+  @apply flex overflow-x-auto text-center mt-20;
+}
+
+.actor:not(:last-of-type) {
+  @apply mr-10;
+}
+
+.actor img {
+  @apply h-48 w-48 object-cover rounded-full;
+}
+
+.actor:hover img {
+  @apply rounded-t-lg rounded-none h-64;
+}
+
+.actor_name {
+  @apply text-primary font-semibold text-xl;
+}
+
+.actor:hover .actor_character {
+  @apply text-black;
+}
+
+.actor {
+  @apply rounded-xl;
+}
+
+.actor * {
+  @apply transition-all;
+}
+
+.actor:hover .actor_info {
+  @apply bg-white pb-2;
+}
+
+.actor_info {
+  @apply rounded-b-lg;
+}
+
+.actor_popularity {
+  @apply hidden mt-2;
+}
+
+.actor:hover .actor_popularity {
+  @apply block;
+}
+
+.actor .actor_info .icon_chartline *,
+.actor_popularity {
+  @apply text-green-400;
 }

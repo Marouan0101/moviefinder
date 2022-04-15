@@ -22,7 +22,7 @@ code {
 
 /* width and height */
 ::-webkit-scrollbar {
-  @apply w-2 h-1;
+  @apply w-2 h-2;
 }
 
 /* Track */

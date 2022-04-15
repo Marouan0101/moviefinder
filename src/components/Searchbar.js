@@ -57,8 +57,8 @@ class SearchBar extends Component {
                   <a
                     href={
                       movie.media_type === 'movie'
-                        ? `/showMovie?id=${movie.id}`
-                        : `/showPerson?id=${movie.id}`
+                        ? `/Movie?id=${movie.id}`
+                        : `/Person?id=${movie.id}`
                     }
                     className='block'
                   >
@@ -84,7 +84,9 @@ class SearchBar extends Component {
                           ? 'Movie'
                           : movie.media_type === 'person' &&
                             movie.known_for_department === 'Acting'
-                          ? 'Actor'
+                          ? movie.gender === 2
+                            ? 'Actor'
+                            : 'Actress'
                           : movie.known_for_department === 'Directing' &&
                             'Director'}
                       </p>

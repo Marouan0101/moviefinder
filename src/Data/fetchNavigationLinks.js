@@ -21,12 +21,14 @@ const NavigationLinks = () => {
   return [
     { id: 1, title: 'Home', url: '/', hasChildren: false },
     { id: 2, title: 'Popular', url: '/Popular', hasChildren: false },
+    { id: 3, title: 'Collections', url: '/Collections', hasChildren: false },
     {
-      id: 3,
+      id: 4,
       title: 'Genres',
       hasChildren: true,
       children: genres,
     },
+    { id: 5, title: 'Actors', url: '/Actors', hasChildren: false },
   ];
 };
 
