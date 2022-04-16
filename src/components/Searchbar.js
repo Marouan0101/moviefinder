@@ -13,10 +13,14 @@ class SearchBar extends Component {
 
   search = async (val) => {
     this.setState({ loading: true });
-    const res = await axios(
+    const searchAPI = await axios(
       `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${val}&page=1&include_adult=false`
     );
-    const movies = await res.data.results.slice(0, 10);
+    const response = await searchAPI.data.results.slice(0, 10);
+
+    const movies = response.filter((object) => {
+      return object.media_type == 'movie' || object.media_type == 'person';
+    });
 
     this.setState({ movies, loading: false });
   };
@@ -28,6 +32,7 @@ class SearchBar extends Component {
 
   get renderMovies() {
     let movies;
+
     if (this.state.value === '') {
       return;
     } else if (this.state.loading) {
@@ -36,10 +41,10 @@ class SearchBar extends Component {
           <FaCircleNotch className='animate-spin text-center text-5xl items-center' />
         </div>
       );
-    } else if (!this.state.movies && this.state.value) {
-      movies = (
+    } else if (!this.state.movies.length && this.state.value) {
+      return (
         <div className={styles.searchresults}>
-          <h1 className='text-center'>No Results</h1>
+          <h1 className='text-center items-center text-white'>No Results</h1>
         </div>
       );
     } else if (this.state.movies && this.state.value) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles/Navbar.module.css';
-import NavigationLinks from '../Data/fetchNavigationLinks';
+import NavigationLinks from '../Data/createNavigationLinks';
 import SearchBar from './Searchbar';
 
 const Navbar = () => {

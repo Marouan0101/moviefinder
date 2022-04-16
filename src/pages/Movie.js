@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar, FaCircleNotch, FaChartLine } from 'react-icons/fa';
+import { FaStar, FaCircleNotch } from 'react-icons/fa';
 import MovieCategory from '../components/MovieCategories';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -9,13 +9,14 @@ import fetchTrailer from '../Data/fetchTrailer';
 import fetchProviders from '../Data/fetchProviders';
 import fetchRecommendedMovies from '../Data/fetchRecommendedMovies';
 import fetchPeople from '../Data/fetchPeople';
+import Cast from '../components/Cast';
+import Credit from '../components/Credit';
 
 const ShowMovie = () => {
   const movie = fetchMovie();
   const providers = fetchProviders();
   const trailer = fetchTrailer();
   const recommendations = fetchRecommendedMovies();
-  const people = fetchPeople();
 
   if (!movie) {
     return (
@@ -24,7 +25,7 @@ const ShowMovie = () => {
       </div>
     );
   }
-  //console.log(fetchPerson()[0]);
+
   const showMovie = () => {
     return (
       <div className={styles.movie}>
@@ -72,55 +73,9 @@ const ShowMovie = () => {
               <p className={styles.overview}>{movie.overview}</p>
               {showTrailer()}
 
-              {people && (
-                <div className='text-xl mt-20'>
-                  {people.crew.map((person) => {
-                    return (
-                      person.job === 'Director' && (
-                        <div className=''>
-                          <hr className='border-primary border-[0.5px] mb-5' />
-                          <span className='font-bold mr-10'>Director</span>
-                          {person.name}
-                        </div>
-                      )
-                    );
-                  })}
-                  <div className='mt-5'>
-                    <hr className='border-primary border-[0.5px] mb-5' />
-
-                    <div className='flex'>
-                      <span className='font-bold mr-10'>Writers</span>
-
-                      <div className='flex'>
-                        {people.crew.map((person) => {
-                          return (
-                            person.job === 'Writer' && (
-                              <div className='ml-10 first:ml-0'>
-                                {person.name}
-                              </div>
-                            )
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className=' mt-5'>
-                    <hr className='border-primary border-[0.5px] mb-5' />
-                    <div className='flex'>
-                      <span className='font-bold mr-10'>Stars</span>
-                      <div className='flex'>
-                        {people.cast.slice(0, 3).map((actor) => {
-                          return (
-                            <div className='ml-10 first:ml-0'>{actor.name}</div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                    <hr className='border-primary border-[0.5px] mt-5' />
-                  </div>
-                </div>
-              )}
+              <div className='mt-10'>
+                <Credit />
+              </div>
             </div>
 
             <div className='col-span-2'>
@@ -145,7 +100,10 @@ const ShowMovie = () => {
             </div>
           </div>
 
-          {showCast()}
+          <div className='mt-20'>
+            <h1 className='mb-5 text-primary'>Cast</h1>
+            <Cast />
+          </div>
 
           <MovieCategory
             header='Others Also Liked'
@@ -155,53 +113,6 @@ const ShowMovie = () => {
         </div>
       </div>
     );
-  };
-
-  const showCast = () => {
-    if (people) {
-      const cast = people.cast;
-      const crew = people.crew;
-
-      /* cast.sort((a, b) =>
-        a.popularity < b.popularity ? 1 : b.popularity < a.popularity ? -1 : 0
-      ); */
-
-      return (
-        <div>
-          <div className={styles.cast}>
-            {cast.map((person) => {
-              if (person.profile_path && person.name) {
-                return (
-                  <div className={styles.actor}>
-                    {person.profile_path && (
-                      <img
-                        className={styles.actor_img}
-                        src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
-                      />
-                    )}
-
-                    <div className={styles.actor_info}>
-                      <div className={styles.actor_name}>{person.name}</div>
-
-                      {person.character && (
-                        <div className={styles.actor_character}>
-                          As {person.character}
-                        </div>
-                      )}
-
-                      <div className={styles.actor_popularity}>
-                        <FaChartLine className={styles.icon_chartline} />{' '}
-                        {person.popularity}
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-          </div>
-        </div>
-      );
-    }
   };
 
   const showGenres = () => {
