@@ -11,11 +11,11 @@ import fetchRecommendedMovies from '../Data/fetchRecommendedMovies';
 import fetchPeople from '../Data/fetchPeople';
 import Cast from '../components/Cast';
 import Credit from '../components/Credit';
+import Trailer from '../components/Trailer';
 
 const ShowMovie = () => {
   const movie = fetchMovie();
   const providers = fetchProviders();
-  const trailer = fetchTrailer();
   const recommendations = fetchRecommendedMovies();
 
   if (!movie) {
@@ -71,7 +71,7 @@ const ShowMovie = () => {
               </div>
 
               <p className={styles.overview}>{movie.overview}</p>
-              {showTrailer()}
+              <Trailer className={styles.trailer} />
 
               <div className='mt-10'>
                 <Credit />
@@ -148,21 +148,6 @@ const ShowMovie = () => {
             );
           })}
         </ul>
-      );
-    }
-  };
-
-  const showTrailer = () => {
-    if (trailer && trailer.official !== false) {
-      return (
-        <iframe
-          className={styles.trailer}
-          src={`https://www.youtube.com/embed/${trailer.key}`}
-          title='YouTube video player'
-          frameBorder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen='allowfullscreen'
-        />
       );
     }
   };

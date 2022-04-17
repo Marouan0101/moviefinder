@@ -1,0 +1,25 @@
+.button_left,
+.button_right {
+  @apply hidden sm:inline-block bg-black/60 border-none text-4xl cursor-pointer h-full absolute transition-all duration-100;
+  /*   transform: translateY(275%);
+ */
+}
+
+.button_left:hover,
+.button_right:hover {
+  @apply bg-black/80 transition-all;
+  /* transform: translateY(400%); */
+}
+
+.button_left path,
+.button_right path {
+  @apply text-primary;
+}
+
+.button_right {
+  @apply right-0 rounded-r-lg;
+}
+
+.button_left {
+  @apply left-0 rounded-l-lg;
+}

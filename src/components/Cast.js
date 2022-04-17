@@ -2,6 +2,7 @@ import React from 'react';
 import fetchPeople from '../Data/fetchPeople';
 import styles from './styles/Cast.module.css';
 import { FaChartLine } from 'react-icons/fa';
+import ScrollButtons from './ScrollButtons';
 
 const Cast = () => {
   const people = fetchPeople();
@@ -17,36 +18,39 @@ const Cast = () => {
     ); */
 
     return (
-      <div className={styles.cast}>
-        {cast.map((person) => {
-          if (person.profile_path && person.name) {
-            return (
-              <div className={styles.actor}>
-                {person.profile_path && (
-                  <img
-                    className={styles.actor_img}
-                    src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
-                  />
-                )}
-
-                <div className={styles.actor_info}>
-                  <div className={styles.actor_name}>{person.name}</div>
-
-                  {person.character && (
-                    <div className={styles.actor_character}>
-                      As {person.character}
-                    </div>
+      <div className='relative'>
+        <ScrollButtons containerId='cast' />
+        <div className={styles.cast} id='cast'>
+          {cast.map((person) => {
+            if (person.profile_path && person.name) {
+              return (
+                <div className={styles.actor}>
+                  {person.profile_path && (
+                    <img
+                      className={styles.actor_img}
+                      src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
+                    />
                   )}
 
-                  <div className={styles.actor_popularity}>
-                    <FaChartLine className={styles.icon_chartline} />{' '}
-                    {person.popularity}
+                  <div className={styles.actor_info}>
+                    <div className={styles.actor_name}>{person.name}</div>
+
+                    {person.character && (
+                      <div className={styles.actor_character}>
+                        As {person.character}
+                      </div>
+                    )}
+
+                    <div className={styles.actor_popularity}>
+                      <FaChartLine className={styles.icon_chartline} />{' '}
+                      {person.popularity}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          }
-        })}
+              );
+            }
+          })}
+        </div>
       </div>
     );
   }

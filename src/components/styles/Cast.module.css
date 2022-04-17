@@ -1,5 +1,9 @@
 .cast {
-  @apply flex overflow-x-auto text-center;
+  @apply flex overflow-auto sm:overflow-hidden text-center h-80;
+}
+
+.cast * {
+  @apply transition-all;
 }
 
 .actor:not(:last-of-type) {
@@ -11,7 +15,15 @@
 }
 
 .actor:hover img {
-  @apply rounded-t-lg rounded-none h-64;
+  @apply rounded-l-lg rounded-none h-full;
+}
+
+.actor:hover .actor_info {
+  @apply w-48;
+}
+
+.actor:hover {
+  @apply flex;
 }
 
 .actor_name {
@@ -22,20 +34,12 @@
   @apply text-black;
 }
 
-.actor {
-  @apply rounded-xl;
-}
-
-.actor * {
-  @apply transition-all;
-}
-
 .actor:hover .actor_info {
   @apply bg-white pb-2;
 }
 
 .actor_info {
-  @apply rounded-b-lg;
+  @apply rounded-r-lg;
 }
 
 .actor_popularity {

@@ -9,7 +9,7 @@
   @apply text-primary mb-4;
 }
 .movieList {
-  @apply flex overflow-x-auto sm:overflow-x-hidden;
+  @apply flex overflow-x-auto sm:overflow-x-hidden rounded-lg;
 }
 
 .movie {
@@ -22,20 +22,4 @@
 
 .movie_img {
   @apply h-48 sm:h-60 md:h-72 rounded-lg;
-}
-
-.buttons {
-  @apply hidden sm:flex;
-}
-
-.button {
-  @apply bg-transparent border-none text-2xl cursor-pointer;
-}
-
-.button:not(:last-child) {
-  @apply mr-2;
-}
-
-.button:hover * {
-  @apply text-primary;
 }

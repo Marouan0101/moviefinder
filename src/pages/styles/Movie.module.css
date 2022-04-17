@@ -59,7 +59,7 @@
 }
 
 .overview {
-  @apply text-center sm:text-left mb-10 text-lg;
+  @apply text-center sm:text-left mb-10 text-lg 2xl:text-xl;
 }
 
 .genres {

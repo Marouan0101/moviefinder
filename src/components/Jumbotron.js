@@ -12,8 +12,17 @@ export default class ShowMovie extends React.Component {
     const url = `${this.props.api}`;
     const response = await fetch(url);
     const data = await response.json();
+
+    const filteredData = data.results.filter((movie) => {
+      return movie.poster_path && movie.backdrop_path;
+    });
+
+    const finalData = filteredData.sort((a, b) =>
+      a.popularity < b.popularity ? 1 : b.popularity < a.popularity ? -1 : 0
+    );
+
     this.setState({
-      movie: data.results[Math.floor(Math.random() * 5)],
+      movie: finalData[Math.floor(Math.random() * 5)],
       loading: false,
     });
   }
