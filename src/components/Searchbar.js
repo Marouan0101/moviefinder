@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiKey from '../Data/apiKey';
 import styles from './styles/Searchbar.module.css';
-import { FaStar, FaCircleNotch } from 'react-icons/fa';
+import { FaStar, FaCircleNotch, FaSearch } from 'react-icons/fa';
 
 class SearchBar extends Component {
   state = {
@@ -33,6 +33,14 @@ class SearchBar extends Component {
   get renderMovies() {
     let movies;
 
+    /* if (this.state.value) {
+      document.querySelector('body').addEventListener('click', () => {
+        document
+          .querySelector(`.${styles.search_group}`)
+          .classList.remove(`${styles.open}`);
+      });
+    } */
+
     if (this.state.value === '') {
       return;
     } else if (this.state.loading) {
@@ -44,7 +52,9 @@ class SearchBar extends Component {
     } else if (!this.state.movies.length && this.state.value) {
       return (
         <div className={styles.searchresults}>
-          <h1 className='text-center items-center text-white'>No Results</h1>
+          <h1 className='text-center items-center text-white inline-block'>
+            No Results
+          </h1>
         </div>
       );
     } else if (this.state.movies && this.state.value) {
@@ -58,6 +68,11 @@ class SearchBar extends Component {
                   movie.media_type === 'movie') ||
                 (movie.profile_path && movie.media_type === 'person')
               ) {
+                const truncate = (source, size) => {
+                  return source.length > size
+                    ? source.slice(0, size - 1) + '…'
+                    : source;
+                };
                 return (
                   <a
                     href={
@@ -78,9 +93,15 @@ class SearchBar extends Component {
                     <div>
                       <p className={styles.movie_title}>
                         {movie.media_type === 'movie'
-                          ? movie.title
+                          ? movie.title.length > 26
+                            ? movie.title.slice(0, 26 - 1) + '…'
+                            : movie.title
                           : movie.original_title
-                          ? movie.original_title
+                          ? movie.original_title.length > 26
+                            ? movie.original_title.slice(0, 26 - 1) + '…'
+                            : movie.original_title
+                          : movie.name.length > 26
+                          ? movie.name.slice(0, 26 - 1) + '…'
                           : movie.name}
                       </p>
 
@@ -117,11 +138,23 @@ class SearchBar extends Component {
   render() {
     return (
       <div className={styles.searchbar}>
-        <input
-          value={this.state.value}
-          onChange={(e) => this.onChangeHandler(e)}
-          placeholder='Search For Movies or People'
-        />
+        <div
+          className={styles.search_group}
+          onClick={() => {
+            const searchGroup = document.querySelector(
+              `.${styles.search_group}`
+            );
+            searchGroup.classList.add(`${styles.open}`);
+          }}
+        >
+          <FaSearch className={styles.icon_search} />
+
+          <input
+            value={this.state.value}
+            onChange={(e) => this.onChangeHandler(e)}
+            placeholder='Search For Movies or People'
+          />
+        </div>
 
         {this.renderMovies}
       </div>
