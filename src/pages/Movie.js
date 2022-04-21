@@ -17,7 +17,6 @@ const ShowMovie = () => {
   const movie = fetchMovie();
   const providers = fetchProviders();
   const recommendations = fetchRecommendedMovies();
-
   if (!movie) {
     return (
       <div>
@@ -27,6 +26,8 @@ const ShowMovie = () => {
   }
 
   const showMovie = () => {
+    document.title = `${movie.title} | MovieFinder`;
+
     return (
       <div className={styles.movie}>
         <div

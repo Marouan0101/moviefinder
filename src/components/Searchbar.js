@@ -19,7 +19,7 @@ class SearchBar extends Component {
     const response = await searchAPI.data.results.slice(0, 10);
 
     const movies = response.filter((object) => {
-      return object.media_type == 'movie' || object.media_type == 'person';
+      return object.media_type === 'movie' || object.media_type === 'person';
     });
 
     this.setState({ movies, loading: false });
@@ -68,11 +68,6 @@ class SearchBar extends Component {
                   movie.media_type === 'movie') ||
                 (movie.profile_path && movie.media_type === 'person')
               ) {
-                const truncate = (source, size) => {
-                  return source.length > size
-                    ? source.slice(0, size - 1) + '…'
-                    : source;
-                };
                 return (
                   <a
                     href={
@@ -88,6 +83,7 @@ class SearchBar extends Component {
                           ? movie.poster_path
                           : movie.profile_path
                       }`}
+                      alt='Couldnt find'
                     />
 
                     <div>
@@ -125,13 +121,12 @@ class SearchBar extends Component {
                     </div>
                   </a>
                 );
-              }
+              } else return;
             }))
           }
         </div>
       );
     }
-
     return movies;
   }
 
