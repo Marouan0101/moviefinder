@@ -15,7 +15,7 @@ input {
 }
 
 .searchresults {
-  @apply absolute lg:p-4  h-5/6 lg:w-2/5 overflow-y-auto overflow-x-hidden rounded-bl-xl bg-secondary z-50 lg:right-0 mt-1.5;
+  @apply absolute lg:p-4  max-h-full lg:w-2/5 overflow-y-auto overflow-x-hidden rounded-bl-xl bg-secondary z-50 lg:right-0 mt-1.5;
 }
 
 .searchresults a {
