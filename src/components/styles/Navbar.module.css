@@ -1,47 +1,109 @@
 .navbar {
-  @apply flex px-10 2xl:text-lg z-50 font-semibold items-center justify-between;
-  overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 20, 20, 0.99) 30%,
-    rgba(20, 20, 20, 0) 700%
-  );
+  @apply transition-all duration-300 h-full w-16 bg-secondary fixed top-0 left-0 text-2xl lg:text-lg z-40 font-semibold overflow-y-auto overflow-x-hidden lg:px-4 xl:px-10 lg:static lg:w-auto lg:overflow-hidden lg:items-center lg:justify-between lg:flex  2xl:text-xl;
+
+  box-shadow: 3px 0px 8px black;
 }
 
-.navbar * {
-  @apply items-center;
+.navbar .link {
+  border-bottom: 0.3rem solid theme('colors.secondary');
 }
 
-.navbar a,
-.subnav_title {
-  border-bottom: 0.3rem solid rgb(20, 20, 20);
+.navbar .items {
+  @apply lg:flex items-center;
 }
 
-.navbar .active,
+.navbar .item .link {
+  @apply flex items-center space-x-4 lg:space-x-0;
+}
+
+.items {
+  @apply py-10 lg:py-0;
+}
+
+.item:not(:first-of-type) {
+  @apply mt-10 lg:mt-0;
+}
+
+.navbar .link .text {
+  @apply hidden lg:inline-block;
+}
+
+.open {
+  @apply w-full sm:w-2/3;
+}
+
+.open .link .text {
+  @apply inline-block;
+}
+
+@media (min-width: theme('screens.lg')) {
+  .subnav_title {
+    border-bottom: 0.3rem solid theme('colors.secondary');
+  }
+}
+
+.link .icon,
+.menu_icon {
+  @apply lg:hidden;
+}
+
+.menu_icon {
+  @apply w-14 ml-1;
+}
+
+.link .icon {
+  @apply w-10 ml-3;
+}
+
+.searchbar {
+  @apply hidden lg:inline-block;
+}
+
+.open .searchbar {
+  @apply inline-block ml-3;
+}
+
+.navbar .active .text,
+.navbar .active .icon path,
 .subnav_content a:hover {
   @apply text-primary;
-  border-bottom: 0.3rem solid;
 }
 
-.navbar a {
-  @apply pb-3 pt-[1.05rem] px-5;
+@media (min-width: theme('screens.lg')) {
+  .navbar .active,
+  .subnav_content a:hover {
+    border-bottom: 0.3rem solid theme('colors.primary');
+  }
 }
 
-.navbar a:hover {
+@media (min-width: theme('screens.lg')) {
+}
+
+.navbar .subnav_title,
+.navbar .link .text {
+  @apply lg:pb-3 lg:pt-[1.05rem] lg:px-4;
+}
+
+.navbar .subnav a {
+  @apply lg:px-4;
+}
+
+.navbar .link:hover .text,
+.navbar .link:hover path {
   @apply text-primary;
 }
 
 .title {
-  @apply text-primary mr-7 text-4xl;
+  @apply hidden lg:inline-block text-primary mr-7 text-4xl my-auto;
 }
 
 .subnav {
-  @apply float-left overflow-hidden;
+  @apply hidden lg:block float-left overflow-hidden;
 }
 
 .subnav_title,
-.navbar a {
-  @apply bg-inherit pb-3 pt-[1.05rem] px-5 m-0;
+.navbar .link .text {
+  @apply bg-inherit lg:pb-3 lg:pt-[1.05rem];
 }
 
 .subnav:hover .subnav_title {

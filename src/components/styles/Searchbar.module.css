@@ -1,29 +1,9 @@
 input {
-  @apply hidden px-3 py-2 border-none outline-none bg-transparent text-base transition-all duration-1000;
+  @apply border-none outline-none bg-transparent text-base flex-1;
 }
 
 .search_group {
-  @apply cursor-pointer w-10 h-10 whitespace-nowrap outline-primary rounded-full bg-[rgb(45,45,45)]  items-center;
-}
-
-.icon_search {
-  @apply mx-2.5 my-3;
-}
-
-.open {
-  @apply w-auto pl-2.5;
-}
-
-.open input {
-  @apply inline-block;
-}
-
-.open .icon_search {
-  @apply p-0 m-0;
-}
-
-.open {
-  @apply cursor-default;
+  @apply px-3 py-2 flex space-x-3 whitespace-nowrap outline-primary rounded-full bg-[rgb(45,45,45)] items-center;
 }
 
 .searchbar {
@@ -35,33 +15,29 @@ input {
 }
 
 .searchresults {
-  @apply absolute max-h-96 overflow-y-auto overflow-x-hidden rounded-bl-xl bg-secondary z-50 text-center right-0 mt-1.5;
-}
-
-.searchresults * {
-  @apply left-0;
-}
-
-.searchresults * {
-  @apply items-start text-left;
+  @apply absolute lg:p-4  h-5/6 lg:w-2/5 overflow-y-auto overflow-x-hidden rounded-bl-xl bg-secondary z-50 lg:right-0 mt-1.5;
 }
 
 .searchresults a {
-  @apply flex;
+  @apply flex space-x-4;
+}
+
+.searchresults a:not(:last-of-type) {
+  @apply mb-4;
 }
 
 .searchresults a img {
-  @apply w-24 rounded-lg mr-5;
+  @apply w-24 lg:w-36 rounded-lg;
 }
 
 .movie_title {
-  @apply text-xl whitespace-nowrap;
+  @apply text-xl lg:text-2xl whitespace-nowrap font-bold;
 }
 
 .type {
-  @apply text-base font-light;
+  @apply text-lg font-light text-primary;
 }
 
 .rating {
-  @apply mt-1;
+  @apply mt-1 text-base lg:text-xl;
 }

@@ -6,7 +6,7 @@
 }
 
 .content {
-  @apply bg-secondary px-4 sm:px-20 py-5 opacity-90 text-white;
+  @apply bg-secondary px-4 sm:px-20 pt-5 opacity-90 text-white;
   transform: translateY(-9rem);
 }
 
@@ -39,7 +39,7 @@
 }
 
 .poster_info {
-  @apply items-center flex justify-between;
+  @apply hidden md:flex items-center justify-between;
 }
 
 .runtime {
@@ -47,7 +47,7 @@
 }
 
 .poster {
-  @apply w-full rounded-md mb-2;
+  @apply hidden md:inline-block w-full rounded-md mb-2;
 }
 
 .icon_star {

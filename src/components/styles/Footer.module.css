@@ -1,5 +1,5 @@
 .footer {
-  @apply text-center pt-20 pb-10 px-20 bg-[#080808];
+  @apply text-center mt-20 pt-20 pb-10 px-20 bg-[#080808];
 }
 
 .title {

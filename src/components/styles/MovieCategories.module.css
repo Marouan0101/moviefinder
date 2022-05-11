@@ -17,9 +17,9 @@
 }
 
 .movie:not(:last-child) {
-  @apply mr-2 sm:mr-7;
+  @apply mr-2 sm:mr-4 md:mr-7;
 }
 
 .movie_img {
-  @apply h-48 sm:h-60 md:h-72 rounded-lg;
+  @apply h-48 sm:h-52 md:h-60 lg:h-72 rounded-lg;
 }

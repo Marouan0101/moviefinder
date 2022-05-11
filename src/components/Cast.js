@@ -3,6 +3,7 @@ import fetchPeople from '../Data/fetchPeople';
 import styles from './styles/Cast.module.css';
 import { FaChartLine } from 'react-icons/fa';
 import ScrollButtons from './ScrollButtons';
+import fetchPerson from '../Data/fetchPerson';
 
 const Cast = () => {
   const people = fetchPeople();
@@ -22,6 +23,7 @@ const Cast = () => {
         <ScrollButtons containerId='cast' />
         <div className={styles.cast} id='cast'>
           {cast.map((person) => {
+            console.log();
             if (person.profile_path && person.name) {
               return (
                 <div className={styles.actor}>

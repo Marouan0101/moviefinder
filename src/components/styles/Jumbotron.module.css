@@ -8,15 +8,16 @@
 
 .content {
   @apply rounded-2xl;
-  text-shadow: 0px 0px 10px black;
 }
 
 .title {
   @apply sm:text-5xl mb-8 sm:mb-10 shadow-black;
+  text-shadow: 0px 10px 10px black;
 }
 
 .overview {
-  @apply hidden sm:block sm:mb-10 text-lg;
+  @apply hidden sm:block sm:mb-10 text-xl font-semibold;
+  text-shadow: 0px 10px 10px black;
 }
 
 .button {

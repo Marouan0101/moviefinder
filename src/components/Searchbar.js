@@ -46,13 +46,13 @@ class SearchBar extends Component {
     } else if (this.state.loading) {
       return (
         <div className={styles.searchresults}>
-          <FaCircleNotch className='animate-spin text-center text-5xl items-center' />
+          <FaCircleNotch className='animate-spin text-center block text-5xl items-center' />
         </div>
       );
     } else if (!this.state.movies.length && this.state.value) {
       return (
         <div className={styles.searchresults}>
-          <h1 className='text-center items-center text-white inline-block'>
+          <h1 className='text-center items-center block text-white'>
             No Results
           </h1>
         </div>
@@ -75,7 +75,6 @@ class SearchBar extends Component {
                         ? `/Movie?id=${movie.id}`
                         : `/Person?id=${movie.id}`
                     }
-                    className='block'
                   >
                     <img
                       src={`https://image.tmdb.org/t/p/original${
@@ -89,15 +88,9 @@ class SearchBar extends Component {
                     <div>
                       <p className={styles.movie_title}>
                         {movie.media_type === 'movie'
-                          ? movie.title.length > 26
-                            ? movie.title.slice(0, 26 - 1) + '…'
-                            : movie.title
+                          ? movie.title
                           : movie.original_title
-                          ? movie.original_title.length > 26
-                            ? movie.original_title.slice(0, 26 - 1) + '…'
-                            : movie.original_title
-                          : movie.name.length > 26
-                          ? movie.name.slice(0, 26 - 1) + '…'
+                          ? movie.original_title
                           : movie.name}
                       </p>
 
@@ -132,16 +125,8 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className={styles.searchbar}>
-        <div
-          className={styles.search_group}
-          onClick={() => {
-            const searchGroup = document.querySelector(
-              `.${styles.search_group}`
-            );
-            searchGroup.classList.add(`${styles.open}`);
-          }}
-        >
+      <div className={this.props.className}>
+        <div className={styles.search_group}>
           <FaSearch className={styles.icon_search} />
 
           <input
