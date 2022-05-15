@@ -27,7 +27,7 @@ input {
 }
 
 .searchresults a img {
-  @apply w-24 lg:w-36 rounded-lg;
+  @apply w-24 lg:w-32 rounded-lg;
 }
 
 .movie_title {

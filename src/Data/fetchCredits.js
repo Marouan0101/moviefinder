@@ -3,18 +3,18 @@ import axios from 'axios';
 import apiKey from './apiKey';
 import params from './params';
 
-const FetchPerson = (id) => {
+const FetchCredits = (id) => {
   const personAPI = `https://api.themoviedb.org/3/person/${
     id ? id : params.id
-  }?api_key=${apiKey}&language=en-US`;
+  }/movie_credits?api_key=${apiKey}&language=en-US`;
 
-  const [person, setPerson] = useState();
+  const [credits, setCredits] = useState();
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const response = await axios.get(personAPI);
-        setPerson(response.data);
+        setCredits(response.data);
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -22,7 +22,7 @@ const FetchPerson = (id) => {
 
     fetch();
   }, []);
-  return person;
+  return credits;
 };
 
-export default FetchPerson;
+export default FetchCredits;

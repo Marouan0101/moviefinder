@@ -1,0 +1,19 @@
+hr {
+  @apply mt-5 mb-5;
+}
+
+.info:not(:last-of-type) {
+  @apply mb-5;
+}
+
+.info span {
+  @apply font-bold;
+}
+
+.biography {
+  @apply text-lg text-justify;
+}
+
+.biography_btn {
+  @apply mx-auto text-lg underline underline-offset-8 block bg-transparent border-0 text-primary cursor-pointer;
+}

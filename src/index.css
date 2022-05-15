@@ -20,6 +20,11 @@ code {
     monospace;
 }
 
+hr {
+  @apply border-primary border-[0.5px] rounded-full;
+  border-style: inset;
+}
+
 /* width and height */
 ::-webkit-scrollbar {
   @apply w-2 h-2;

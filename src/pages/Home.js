@@ -11,7 +11,7 @@ import fetchUpcomingMovies from '../Data/fetchUpcomingMovies';
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
       <Jumbotron api='https://api.themoviedb.org/3/movie/popular?api_key=5d1ca884d832cc35c28f4c48849ebd48&language=en-US&page=1' />
       <div className={styles.container}>
@@ -43,7 +43,7 @@ function App() {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 .navbar {
-  @apply transition-all duration-300 h-full w-16 bg-secondary fixed top-0 left-0 text-2xl lg:text-lg z-40 font-semibold overflow-y-auto overflow-x-hidden lg:px-4 xl:px-10 lg:static lg:w-auto lg:overflow-hidden lg:items-center lg:justify-between lg:flex  2xl:text-xl;
+  @apply transition-all duration-300 h-full w-16 bg-secondary fixed top-0 left-0 text-2xl lg:text-lg z-40 font-semibold overflow-y-auto overflow-x-hidden lg:px-4 xl:px-10 lg:static lg:w-auto lg:overflow-hidden lg:items-center lg:justify-between lg:flex 2xl:text-xl;
 
-  box-shadow: 3px 0px 8px black;
+  box-shadow: 3px 0px 3px black;
 }
 
 .navbar .link {

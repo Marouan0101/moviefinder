@@ -26,7 +26,7 @@ const Cast = () => {
             console.log();
             if (person.profile_path && person.name) {
               return (
-                <div className={styles.actor}>
+                <a href={`/Person?id=${person.id}`} className={styles.actor}>
                   {person.profile_path && (
                     <img
                       className={styles.actor_img}
@@ -48,7 +48,7 @@ const Cast = () => {
                       {person.popularity}
                     </div>
                   </div>
-                </div>
+                </a>
               );
             }
           })}
