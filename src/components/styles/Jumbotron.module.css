@@ -17,7 +17,7 @@
 
 .overview {
   @apply hidden sm:block sm:mb-10 text-xl font-semibold;
-  text-shadow: 0px 10px 10px black;
+  text-shadow: 0px 0px 10px black;
 }
 
 .button {
