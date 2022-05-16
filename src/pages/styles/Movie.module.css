@@ -6,7 +6,7 @@
 }
 
 .content {
-  @apply bg-secondary px-4 sm:px-20 pt-5 opacity-90 text-white;
+  @apply bg-secondary px-4 sm:px-20 2xl:px-52 pt-5 opacity-90 text-white;
   transform: translateY(-9rem);
 }
 
@@ -59,7 +59,7 @@
 }
 
 .overview {
-  @apply text-center sm:text-left mb-10 text-lg 2xl:text-xl;
+  @apply text-center sm:text-left my-10 text-lg 2xl:text-xl;
 }
 
 .genres {
@@ -87,5 +87,5 @@
 }
 
 .trailer {
-  @apply h-64 sm:h-96 2xl:h-[40rem] w-full;
+  @apply h-64 sm:h-96 2xl:h-[30rem] w-full;
 }
