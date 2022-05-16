@@ -17,6 +17,7 @@ const ShowMovie = () => {
   const movie = fetchMovie();
   const providers = fetchProviders();
   const recommendations = fetchRecommendedMovies();
+
   if (!movie) {
     return (
       <div>

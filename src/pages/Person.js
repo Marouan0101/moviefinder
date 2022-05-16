@@ -9,17 +9,10 @@ import styles from './styles/Person.module.css';
 const Person = () => {
   const person = fetchPerson();
   const credits = fetchCredits();
-  const button = document.querySelector(`.${styles.biography_btn}`);
-  const biography = document.querySelector(`.${styles.biography}`);
-  const bioWordLength = 100;
-
-  /* console.log('Person: ', person);
-
-  if (credits) {
-    console.log('Credits: ', credits.cast);
-  } */
 
   if (person && credits) {
+    document.title = `${person.name} | MovieFinder`;
+
     credits.cast.sort((a, b) =>
       a.popularity < b.popularity ? 1 : b.popularity < a.popularity ? -1 : 0
     );
