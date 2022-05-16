@@ -1,17 +1,25 @@
 hr {
-  @apply mt-5 mb-5;
+  @apply mt-3 mb-2;
 }
 
 .info:not(:last-of-type) {
-  @apply mb-5;
+  @apply mb-2;
 }
 
 .info span {
   @apply font-bold;
 }
 
+.info_title {
+  @apply font-bold text-lg xl:text-xl;
+}
+
+.info_text {
+  @apply text-lg xl:text-xl font-light;
+}
+
 .biography {
-  @apply text-lg text-justify;
+  @apply text-lg 2xl:text-xl !leading-8 text-justify;
 }
 
 .biography_btn {

@@ -22,7 +22,7 @@ const Person = () => {
         <Navbar />
 
         <div className='p-2 sm:p-8 lg:p-12 xl:p-14 2xl:p-20 '>
-          <div className='flex space-x-10 h-80'>
+          <div className='flex space-x-10 h-80 2xl:h-96'>
             <img
               src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
               className=' rounded-xl'
@@ -33,26 +33,41 @@ const Person = () => {
               <hr />
 
               <div className='text-xl'>
-                <div className={styles.info}>
-                  <span>Department: </span>
-                  {person.known_for_department === 'Acting'
-                    ? person.gender === 1
-                      ? 'Actress'
-                      : 'Actor'
-                    : 'Director'}
-                </div>
-                <div className={styles.info}>
-                  <span>Place of birth: </span>
-                  {person.place_of_birth}
-                </div>
-                <div className={styles.info}>
-                  <span>Birthday: </span>
-                  {person.birthday}
-                </div>
-                <div className={styles.info}>
-                  <span>Popularity: </span>
-                  {person.popularity}
-                </div>
+                {person.known_for_department && (
+                  <div className={styles.info}>
+                    <div className={styles.info_title}>Department</div>
+                    <div className={styles.info_text}>
+                      {person.known_for_department === 'Acting'
+                        ? person.gender === 1
+                          ? 'Actress'
+                          : 'Actor'
+                        : 'Director'}
+                    </div>
+                  </div>
+                )}
+
+                {person.place_of_birth && (
+                  <div className={styles.info}>
+                    <div className={styles.info_title}>Place of birth</div>
+                    <div className={styles.info_text}>
+                      {person.place_of_birth}
+                    </div>
+                  </div>
+                )}
+
+                {person.birthday && (
+                  <div className={styles.info}>
+                    <div className={styles.info_title}>Birthday</div>
+                    <div className={styles.info_text}>{person.birthday}</div>
+                  </div>
+                )}
+
+                {person.popularity && (
+                  <div className={styles.info}>
+                    <div className={styles.info_title}>Popularity</div>
+                    <div className={styles.info_text}>{person.popularity}</div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
